@@ -1,5 +1,5 @@
 
-file = open("data.txt")
+file = open("data.txt", "r")
 
 lines = file.readlines()
 
