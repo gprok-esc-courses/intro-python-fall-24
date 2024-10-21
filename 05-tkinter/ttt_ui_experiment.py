@@ -1,17 +1,20 @@
 from tkinter import Misc, Tk, Label, Button, Frame, Variable
 from typing import Any, Literal
 
-class GameButton(Button):
-    def __init__(self, master: None, brow: 0, bcol: 0) -> None:
-        super().__init__(master, text='-')
-        self.brow = brow
-        self.bcol = bcol
+# class GameButton(Button):
+#     def __init__(self, master: None, brow: 0, bcol: 0) -> None:
+#         super().__init__(master, text='-')
+#         self.brow = brow
+#         self.bcol = bcol
 
-    def on_click(self, event):
-        print(self.brow, self.bcol)
+#     def on_click(self, event):
+#         print(self.brow, self.bcol)
 
 def play_again():
     print("Play Again")
+
+def btn_clicked(row, col):
+    print("BTN:", row, col)
 
 
 window = Tk()
@@ -24,8 +27,7 @@ frame = Frame(window)
 btn_list = [] 
 for r in range(1, 4):
     for c in range(1, 4):
-        b = GameButton(frame, brow=r, bcol=c)
-        b.bind('<Button-1>', b.on_click)
+        b = Button(frame, text='-', command=lambda row=r, col=c: btn_clicked(row, col))
         b.grid(row=r, column=c)
         btn_list.append(b)
 frame.grid(row=2, column=1)
